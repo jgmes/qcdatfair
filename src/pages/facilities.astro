@@ -1,16 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const facilities = [
- {code:'SIS18',name:'The present frontier',exp:'HADES',text:'The SIS18 accelerator provides an established platform for precision hadron physics. HADES offers a versatile detector for studies with proton and pion beams, including baryon resonances, electromagnetic probes, and hadron interactions.'},
- {code:'SIS100',name:'A new intensity frontier',exp:'CBM',text:'The SIS100 programme opens opportunities with intense proton and heavy-ion beams. CBM is designed for high-rate measurements of strongly interacting matter at high baryon densities.'},
- {code:'HESR',name:'Precision with antiprotons',exp:'PANDA',text:'The High Energy Storage Ring and PANDA experiment provide a complementary route to hadron spectroscopy and hadron structure using stored antiproton beams.'},
- {code:'SFRS',name:'A versatile research platform',exp:'WASA · Super-FRS',text:'The Super-FRS and associated experimental setups offer additional opportunities for rare-isotope and secondary-beam studies, broadening the experimental landscape.'}
+const accelerators = [
+  {code:'SIS18',name:'The present accelerator platform',text:'The established SIS18 synchrotron provides the basis for the current hadron-physics programme, including proton beams and secondary pion beams.'},
+  {code:'SIS100',name:'The next intensity frontier',text:'The SIS100 synchrotron will extend the programme with intense proton and heavy-ion beams, opening new opportunities for high-rate measurements.'},
+  {code:'HESR',name:'Antiproton storage ring',text:'The High Energy Storage Ring (HESR) is the future facility for precision experiments with stored antiproton beams.'},
+  {code:'SFRS',name:'Super-FRS facility',text:'The Superconducting Fragment Separator (Super-FRS) provides a versatile facility for rare-isotope and secondary-beam research.'}
+];
+const experiments = [
+  {code:'HADES',stage:'Current programme · SIS18',title:'High Acceptance DiElectron Spectrometer',text:'HADES provides a versatile detector for hadron physics at SIS18. A particularly important opportunity is its combination with a secondary pion beam, alongside proton-induced measurements.',beam:'SIS18 · proton and secondary pion beams'},
+  {code:'CBM',stage:'FAIR programme · SIS100',title:'Compressed Baryonic Matter',text:'CBM is designed for high-rate measurements of strongly interacting matter at high baryon densities, using the intense beams available at SIS100.',beam:'SIS100 · intense proton and heavy-ion beams'},
+  {code:'PANDA',stage:'Future programme · HESR',title:'Antiproton Annihilations at Darmstadt',text:'In the longer-term FAIR perspective, PANDA will exploit stored antiproton beams at HESR for precision studies of hadron spectroscopy, structure and interactions.',beam:'HESR · stored antiproton beams'}
 ];
 ---
 <BaseLayout title="Facilities">
-  <section class="page-hero"><div class="section-kicker">THE GSI / FAIR LANDSCAPE</div><h1>Different beams.<br /><em>One scientific mission.</em></h1><p>The QCDatFAIR programme builds on complementary accelerator and detector capabilities — from current SIS18 experiments to the future FAIR complex.</p></section>
-  <section class="section-wrap facility-list">
-    {facilities.map((f,i) => <article class="facility-row"><div class="facility-code">{f.code}<span>0{i+1}</span></div><div class="facility-main"><div class="facility-exp">{f.exp}</div><h2>{f.name}</h2><p>{f.text}</p></div><div class="facility-mark">{i===0?'◉':i===1?'⌁':i===2?'◎':'✳'}</div></article>)}
+  <section class="page-hero"><div class="section-kicker">THE GSI / FAIR LANDSCAPE</div><h1>Accelerators and<br /><em>experimental facilities.</em></h1><p>The QCDatFAIR programme connects the accelerator infrastructure available at GSI and FAIR with complementary detector systems. The distinction between beam facilities and experiments is central to understanding the staged research opportunities.</p></section>
+
+  <section class="section-wrap facilities-block">
+    <div class="section-kicker">01 / ACCELERATOR FACILITIES <span>BEAMS AND INFRASTRUCTURE</span></div>
+    <div class="facilities-intro"><h2>Where the beams<br /><em>come from.</em></h2><p>These accelerator facilities provide the beams and experimental conditions on which the hadron-physics programme can build.</p></div>
+    <div class="accelerator-grid">
+      {accelerators.map((a,i) => <article class="accelerator-card"><div class="accelerator-top"><span>{a.code}</span><small>0{i+1}</small></div><h3>{a.name}</h3><p>{a.text}</p></article>)}
+    </div>
   </section>
-  <p class="section-wrap note">Facility capabilities and schedules evolve. Please consult the official GSI and FAIR channels for operational information.</p>
+
+  <section class="section-wrap facilities-block detector-block">
+    <div class="section-kicker">02 / DETECTOR FACILITIES <span>EXPERIMENTS AND BEAM COMBINATIONS</span></div>
+    <div class="facilities-intro"><h2>Where the science<br /><em>is measured.</em></h2><p>The detector programme develops in stages, with each experiment exploiting the beam capabilities of its associated accelerator facility.</p></div>
+    <div class="detector-list">
+      {experiments.map((e,i) => <article class="detector-row"><div class="detector-index">0{i+1}</div><div class="detector-main"><div class="detector-stage">{e.stage}</div><h3>{e.code} <span>— {e.title}</span></h3><p>{e.text}</p><div class="beam-combination"><span>BEAM COMBINATION</span><strong>{e.beam}</strong></div></div></article>)}
+    </div>
+  </section>
+  <p class="section-wrap note">The programme is staged in time: HADES with SIS18 is the current opportunity, CBM is associated with SIS100, while PANDA at HESR represents the longer-term perspective. Facility capabilities and schedules evolve; please consult official GSI and FAIR channels for operational information.</p>
 </BaseLayout>
