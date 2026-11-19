@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+const { title = 'QCD at FAIR', description = 'Exploring strong QCD with hadron beams at GSI and FAIR.' } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  ['Science', '/science/'], ['Facilities', '/facilities/'],
+  ['Community', '/community/'], ['Contribute', '/contribute/'], ['Resources', '/resources/'], ['Contact', '/contact/']
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#081b2b" />
+    <title>{title} · QCD at FAIR</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <section class="access-gate" id="access-gate" aria-labelledby="gate-title">
+      <div class="gate-grid"></div>
+      <div class="gate-panel">
+        <img class="gate-logo" src="/images/qcdatfair-logo.png" alt="QCD at FAIR" />
+        <div class="gate-kicker"><span></span> COMMUNITY ACCESS</div>
+        <h1 id="gate-title">The strong interaction.<br /><em>A shared frontier.</em></h1>
+        <p class="gate-intro">Welcome to QCD at FAIR — connecting the hadron-physics community around the scientific opportunities at GSI and FAIR.</p>
+        <form id="access-form" class="gate-form">
+          <label for="access-password">Enter access password</label>
+          <div class="gate-input-row">
+            <input id="access-password" name="password" type="password" placeholder="Password" autocomplete="current-password" required />
+            <button type="submit">Enter <span>↗</span></button>
+          </div>
+          <p class="gate-error" id="gate-error" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="gate-foot">HADRON PHYSICS · QCD · GSI / FAIR</div>
+      </div>
+    </section>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="QCD at FAIR home">
+        <img class="brand-logo" src="/images/qcdatfair-logo.png" alt="QCD at FAIR" />
+      </a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" aria-label="Main navigation">
+        {nav.map(([label, href]) => <a class:list={{ active: path === href }} href={href}>{label}</a>)}
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <a class="brand footer-brand" href="/" aria-label="QCD at FAIR home"><img class="brand-logo" src="/images/qcdatfair-logo.png" alt="QCD at FAIR" /></a>
+        <p>A coordinated community exploring the strong interaction<br />with hadron beams at GSI and FAIR.</p>
+      </div>
+      <div class="footer-bottom"><span>© {new Date().getFullYear()} QCD at FAIR initiative</span><span>Research · Collaboration · Discovery</span></div>
+    </footer>
+    <script>
+      const gate = document.querySelector('#access-gate');
+      const accessForm = document.querySelector('#access-form');
+      const accessInput = document.querySelector('#access-password');
+      const gateError = document.querySelector('#gate-error');
+      const accessKey = 'qcdatfair-access-granted';
+      if (localStorage.getItem(accessKey) === 'yes') gate?.classList.add('is-hidden');
+      accessForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (accessInput?.value === 'atgsi') {
+          localStorage.setItem(accessKey, 'yes');
+          gate?.classList.add('is-hidden');
+          gateError.textContent = '';
+        } else {
+          gateError.textContent = 'That password was not recognised. Please try again.';
+          accessInput.value = '';
+          accessInput.focus();
+        }
+      });
+      const toggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.main-nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

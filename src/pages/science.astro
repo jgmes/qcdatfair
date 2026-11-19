@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const themes = [
+ {id:'interactions',n:'01',title:'Hadron–hadron interactions',desc:'Understanding the forces that govern the interaction of strongly interacting particles.',items:['Nucleon–nucleon and hyperon–nucleon interactions','Pion-induced reactions and coupled-channel dynamics','Femtoscopy, scattering lengths, and precision cross sections']},
+ {id:'spectroscopy',n:'02',title:'The composition of hadrons',desc:'Charting the spectrum of conventional and exotic hadrons to understand how quarks and gluons organise into bound states.',items:['Baryon and meson spectroscopy','Strangeness and the role of coupled channels','Exotic hadrons and multiquark configurations']},
+ {id:'structure',n:'03',title:'Electromagnetic structure',desc:'Using electromagnetic probes to reveal the internal structure and transition dynamics of hadrons.',items:['Electromagnetic form factors and transition form factors','Dalitz decays and dilepton observables','Generalised parton distributions and hadron tomography']},
+ {id:'matter',n:'04',title:'Hadrons in matter',desc:'Investigating how hadrons and their properties evolve in a dense and hot environment.',items:['In-medium spectral functions and modifications','Dense baryonic matter and neutron-star connections','Equation of state and astrophysical implications']},
+ {id:'theory',n:'05',title:'Theory & computation',desc:'Connecting precision measurements to a quantitative understanding of non-perturbative QCD.',items:['Lattice QCD and chiral effective field theory','Dispersive approaches and continuum methods','Advanced simulation, reconstruction, and data science']}
+];
+---
+<BaseLayout title="Science">
+  <section class="page-hero"><div class="section-kicker">RESEARCH PROGRAMME</div><h1>Questions at the<br /><em>heart of QCD.</em></h1><p>From the forces between hadrons to the structure of matter under extreme conditions, QCD at FAIR connects complementary research directions into a coherent programme.</p></section>
+  <section class="section-wrap science-list">
+    {themes.map(t => <article class="science-row" id={t.id}><div class="science-number">{t.n}</div><div><h2>{t.title}</h2><p>{t.desc}</p></div><ul>{t.items.map(x => <li>{x}</li>)}</ul></article>)}
+  </section>
+
+  <section class="section-wrap science-examples">
+    <div class="section-kicker">SELECTED PHYSICS CASES <span>EXPERIMENTAL OPPORTUNITIES</span></div>
+    <div class="section-heading"><h2>Make the questions<br /><em>measurable.</em></h2><p class="section-aside">Examples from the DPG 2026 presentation illustrate how the broad programme translates into concrete measurements.</p></div>
+    <div class="text-case-grid">
+      <article class="text-case" id="pion-dileptons"><span class="mini-label">HADES · SIS18 · PION-INDUCED REACTIONS</span><h3>Time-like transition form factors</h3><p>The reaction π⁻p → e⁺e⁻n provides access to the electromagnetic structure of excited baryons in the time-like region. The measured dielectron invariant-mass distribution can be confronted with vector-meson-dominance, quark-core plus meson-cloud, and dispersive descriptions.</p></article>
+      <article class="text-case" id="cbm-hyperons"><span class="mini-label">CBM · SIS100 · HYPERON PHYSICS</span><h3>Hyperon composition and structure</h3><p>High-rate proton beams open a complementary route to excited hyperons, including electromagnetic transition form factors and line-shape measurements. The presentation discusses pp → pK⁺Λ(1520), with Λ(1520) → Λe⁺e⁻, as a performance-study example.</p></article>
+      <article class="text-case" id="pion-programme"><span class="mini-label">HADES · PION BEAM PROGRAMME</span><h3>From resonance regions to SU(3) dynamics</h3><p>The pion-beam programme targets the second and third baryon-resonance regions and beyond. Selected strange final-state thresholds motivate studies of baryon–meson dynamics across different targets.</p></article>
+      <article class="text-case"><span class="mini-label">SIS18 · SIS100 · HESR</span><h3>A complementary FAIR roadmap</h3><p>The programme connects π and proton beams at SIS18, high-intensity proton beams at SIS100, and antiprotons at HESR. The physics reach broadens from light- and strange-quark dynamics towards charm.</p></article>
+    </div>
+    <p class="figure-credit">Scientific examples are based on J. Messchendorp and F. Nerling, “Strong QCD across communities”, DPG Frühjahrstagung 2026, talk HK19.3. No slide images are reproduced on this page.</p>
+  </section>
+
+  <section class="bottom-cta"><div><span class="section-kicker">A SHARED SCIENTIFIC VISION</span><h2>Explore the full programme<br /><em>in the White Paper.</em></h2></div><a class="button button-primary" href="https://arxiv.org/abs/2512.15986" target="_blank" rel="noreferrer">Open arXiv paper ↗</a></section>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const email = 'info@qcdatfair.eu';
+const submissions = [
+  {n:'01',type:'TALKS & PRESENTATIONS',title:'Share a QCD at FAIR talk',desc:'Presentations at conferences, workshops, collaboration meetings, or seminars that introduce or develop the QCD at FAIR scientific programme.',details:'Please include the talk title, speaker(s), event and date, a short description, and a link to the Indico contribution or slides.'},
+  {n:'02',type:'PUBLICATIONS',title:'Add a related publication',desc:'Papers, preprints, proceedings, and review articles relevant to the scientific themes of QCD at FAIR.',details:'Please include the full reference, DOI or arXiv identifier, author list, and one or two sentences explaining the connection to the programme.'},
+  {n:'03',type:'WORKSHOPS & EVENTS',title:'List a community event',desc:'Workshops, topical meetings, schools, and conference sessions that bring together the hadron and QCD communities around GSI/FAIR opportunities.',details:'Please include the event title, dates, venue, organisers, a short description, and the public event website.'}
+];
+const mailto = (subject) => `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+---
+<BaseLayout title="Contribute">
+  <section class="page-hero"><div class="section-kicker">COMMUNITY CONTRIBUTIONS</div><h1>Make the community<br /><em>visible.</em></h1><p>QCD at FAIR is a community-driven initiative. Help us document the talks, publications, and events that connect researchers and advance the scientific programme.</p></section>
+  <section class="section-wrap contribute-intro">
+    <div><span class="section-kicker">SHARE YOUR CONTRIBUTION</span><h2>A living record of<br /><em>our community.</em></h2></div>
+    <p>We welcome contributions from across the experimental and theoretical communities. Submissions are reviewed before being added to the website, so the listings remain relevant, accurate, and useful.</p>
+  </section>
+  <section class="section-wrap contribution-list">
+    {submissions.map(item => <article class="contribution-card">
+      <div class="contribution-number">{item.n}</div>
+      <div class="contribution-content"><span class="mini-label">{item.type}</span><h2>{item.title}</h2><p>{item.desc}</p><div class="contribution-details"><b>What to send</b><p>{item.details}</p></div><a class="button button-primary" href={mailto(`QCD at FAIR website contribution — ${item.type}`)}>Submit by email <span>↗</span></a></div>
+    </article>)}
+  </section>
+  <section class="submission-note">
+    <div><span class="section-kicker">EDITORIAL NOTE</span><h2>Quality and context<br /><em>come first.</em></h2></div>
+    <p>Please submit public links wherever possible (Indico pages, DOI records, arXiv entries, or institutional event pages). The website team may edit descriptions for consistency and will contact contributors if clarification is needed. Submission does not guarantee publication.</p>
+  </section>
+  <section class="bottom-cta"><div><span class="section-kicker">QUESTIONS OR SUGGESTIONS?</span><h2>Contact the<br /><em>QCD at FAIR team.</em></h2></div><a class="button button-primary" href="mailto:info@qcdatfair.eu">info@qcdatfair.eu ↗</a></section>
+</BaseLayout>

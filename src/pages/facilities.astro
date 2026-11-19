@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const facilities = [
+ {code:'SIS18',name:'The present frontier',exp:'HADES',text:'The SIS18 accelerator provides an established platform for precision hadron physics. HADES offers a versatile detector for studies with proton and pion beams, including baryon resonances, electromagnetic probes, and hadron interactions.'},
+ {code:'SIS100',name:'A new intensity frontier',exp:'CBM',text:'The SIS100 programme opens opportunities with intense proton and heavy-ion beams. CBM is designed for high-rate measurements of strongly interacting matter at high baryon densities.'},
+ {code:'HESR',name:'Precision with antiprotons',exp:'PANDA',text:'The High Energy Storage Ring and PANDA experiment provide a complementary route to hadron spectroscopy and hadron structure using stored antiproton beams.'},
+ {code:'SFRS',name:'A versatile research platform',exp:'WASA · Super-FRS',text:'The Super-FRS and associated experimental setups offer additional opportunities for rare-isotope and secondary-beam studies, broadening the experimental landscape.'}
+];
+---
+<BaseLayout title="Facilities">
+  <section class="page-hero"><div class="section-kicker">THE GSI / FAIR LANDSCAPE</div><h1>Different beams.<br /><em>One scientific mission.</em></h1><p>The QCDatFAIR programme builds on complementary accelerator and detector capabilities — from current SIS18 experiments to the future FAIR complex.</p></section>
+  <section class="section-wrap facility-list">
+    {facilities.map((f,i) => <article class="facility-row"><div class="facility-code">{f.code}<span>0{i+1}</span></div><div class="facility-main"><div class="facility-exp">{f.exp}</div><h2>{f.name}</h2><p>{f.text}</p></div><div class="facility-mark">{i===0?'◉':i===1?'⌁':i===2?'◎':'✳'}</div></article>)}
+  </section>
+  <p class="section-wrap note">Facility capabilities and schedules evolve. Please consult the official GSI and FAIR channels for operational information.</p>
+</BaseLayout>

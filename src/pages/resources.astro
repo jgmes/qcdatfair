@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const talks = [
+  {year:'2026',title:'“QCD at FAIR”: Hadron Physics Opportunities at FAIR',speaker:'Johan Messchendorp',event:'MESON2026 · Kraków · 26 June 2026',description:'Invited plenary overview of the decade-long, cross-community hadron-physics programme and its staged SIS18–SIS100–HESR roadmap.',url:'https://indico.meson.if.uj.edu.pl/event/6/contributions/470/',tag:'Invited plenary'},
+  {year:'2026',title:'Hadron Physics at FAIR',speaker:'Johan Messchendorp',event:'QCHS 2026 · Wrocław · 1 July 2026',description:'Overview of the FAIR hadron-physics programme, based on the QCD at FAIR White Paper.',url:'https://indico.cern.ch/event/1531304/contributions/7109317/',tag:'Conference talk'},
+  {year:'2026',title:'QCD at FAIR: Strong QCD Across Communities',speaker:'Johan Messchendorp',event:'DPG Spring Meeting · Erlangen · 18 March 2026',description:'Invited talk highlighting the synergy and added value of a coherent mid- and long-term hadron-physics agenda at GSI/FAIR.',url:'https://www.dpg-verhandlungen.de/year/2026/conference/erlangen/static/hk19.pdf',tag:'Invited talk'},
+  {year:'2026',title:'“QCD at FAIR” — A hadron-physics-driven campaign towards FAIR completion',speaker:'Frank Nerling',event:'NSTAR 2026 · 11 September 2026',description:'Presentation of the initiative and its opportunities at existing and upcoming SIS18/SIS100 experiments, with emphasis on hadron structure and spectroscopy.',url:'https://indico.global/event/15528/contributions/149061/',tag:'Plenary talk'},
+  {year:'2025',title:'QCD at FAIR: A cross-community network for hadron physics',speaker:'Johan Messchendorp',event:'ExHIC-d 2025 · Jeju · 15 November 2025',description:'Introduction to the network, its scientific scope, and the White Paper roadmap.',url:'https://indico.cern.ch/event/1540363/contributions/6740047/',tag:'Invited talk'},
+  {year:'2025',title:'Hadron Physics Opportunities at FAIR',speaker:'Johan Messchendorp',event:'Baryons 2025 · Jeju · 10 November 2025',description:'Scientific vision for a decade-long programme spanning hadron interactions, baryon spectroscopy, transition form factors and in-medium modifications.',url:'https://indico.cern.ch/event/1339154/contributions/6689180/',tag:'Invited plenary'},
+  {year:'2024',title:'Pion- and (anti)proton-induced QCD studies at GSI/FAIR: from SIS18 to SIS100',speaker:'Johan Messchendorp',event:'NSTAR24 · York · 19 June 2024',description:'Overview of the strong-QCD opportunities with pion, proton and antiproton beams and the HADES, CBM and PANDA experiments.',url:'https://indico.jlab.org/event/729/contributions/14440/',tag:'Conference talk'}
+];
+const workshops = [
+  {title:'QCD at FAIR Workshop 2024',date:'11–14 November 2024 · GSI',url:'https://indico.gsi.de/event/20301/',description:'Community workshop to review progress on the White Paper and the hadron-physics programme.'},
+  {title:'Physics opportunities with proton beams at SIS100',date:'6–9 February 2024 · Wuppertal',url:'https://indico.gsi.de/event/18475/',description:'Workshop on proton-induced interactions and scientific opportunities at SIS100.'},
+  {title:'QCD at FAIR kick-off workshop',date:'June 2023 · MESON2023 · Kraków',url:'https://indico.gsi.de/event/17693/',description:'Initial community meeting that launched the SIS100 proton-beam physics discussion.'},
+  {title:'QCD@FAIR/GSI – Physics Opportunities with Proton and Pion Beams',date:'22–27 June 2025 · Catania',url:'https://indico.gsi.de/event/QCDatFAIR2025',description:'White Paper milestone workshop bringing together theory and experiment to consolidate the programme.'}
+];
+---
+<BaseLayout title="Resources">
+  <section class="page-hero"><div class="section-kicker">PUBLICATIONS, TALKS & LINKS</div><h1>Ideas, evidence,<br /><em>and resources.</em></h1><p>Explore the QCD at FAIR White Paper, selected presentations introducing the initiative, and the workshops that helped shape the programme.</p></section>
+  <section class="section-wrap resources-list">
+    <a class="resource-card featured" href="https://arxiv.org/abs/2512.15986" target="_blank" rel="noreferrer"><div class="resource-type">COMMUNITY WHITE PAPER · ARXIV</div><h2>Hadron Physics<br /><em>Opportunities at FAIR</em></h2><p>A coordinated, decade-spanning programme of hadron and QCD studies anchored at the GSI/FAIR accelerator complex.</p><span class="resource-meta">J. G. Messchendorp, F. Nerling et al. · arXiv:2512.15986</span><span class="resource-arrow">↗</span></a>
+    <a class="resource-card" href="https://www.gsi.de/" target="_blank" rel="noreferrer"><div class="resource-type">RESEARCH CENTRE</div><h2>GSI</h2><p>Information about research, accelerators, experiments, and scientific opportunities at GSI.</p><span class="resource-meta">gsi.de</span><span class="resource-arrow">↗</span></a>
+    <a class="resource-card" href="https://www.fair-center.eu/" target="_blank" rel="noreferrer"><div class="resource-type">ACCELERATOR FACILITY</div><h2>FAIR</h2><p>Discover the Facility for Antiproton and Ion Research and its scientific programme.</p><span class="resource-meta">fair-center.eu</span><span class="resource-arrow">↗</span></a>
+  </section>
+  <section class="section-wrap talk-section">
+    <div class="section-kicker">SELECTED PRESENTATIONS <span>2024–2026</span></div>
+    <div class="section-heading"><h2>QCD at FAIR<br /><em>in the community.</em></h2><p class="section-aside">A selection of talks that present the initiative, its scientific vision, and the developing hadron-physics programme. Links point to the conference or Indico contribution pages, where presentation files are provided when available.</p></div>
+    <div class="talk-list">
+      {talks.map(t => <a class="talk-item" href={t.url} target="_blank" rel="noreferrer"><div class="talk-year">{t.year}</div><div class="talk-main"><span class="talk-tag">{t.tag}</span><h3>{t.title}</h3><p>{t.description}</p><span class="talk-meta">{t.speaker} · {t.event}</span></div><span class="talk-arrow">↗</span></a>)}
+    </div>
+  </section>
+  <section class="section-wrap workshop-section">
+    <div class="section-kicker">WORKSHOPS & COMMUNITY MILESTONES</div>
+    <h2>Where the programme<br /><em>took shape.</em></h2>
+    <div class="workshop-grid">
+      {workshops.map(w => <a class="workshop-card" href={w.url} target="_blank" rel="noreferrer"><span class="resource-type">{w.date}</span><h3>{w.title}</h3><p>{w.description}</p><span class="text-link">Workshop page ↗</span></a>)}
+    </div>
+  </section>
+</BaseLayout>
