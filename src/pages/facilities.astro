@@ -27,7 +27,7 @@ const experiments = [
     <div class="section-kicker">02 / DETECTOR FACILITIES <span>EXPERIMENTS AND BEAM COMBINATIONS</span></div>
     <div class="facilities-intro"><h2>Where the science<br /><em>is measured.</em></h2><p>The detector programme develops in stages, with each experiment exploiting the beam capabilities of its associated accelerator facility.</p></div>
     <div class="detector-list">
-      {experiments.map((e,i) => <article class="detector-row"><div class="detector-index">0{i+1}</div><div class="detector-main"><div class="detector-stage">{e.stage}</div><h3>{e.code} <span>— {e.title}</span></h3><p>{e.text}</p><div class="beam-combination"><span>BEAM COMBINATION</span><strong>{e.beam}</strong></div></div></article>)}
+      {experiments.map((e,i) => <article class="detector-row"><div class="detector-index">0{i+1}</div><div class="detector-main"><div class="detector-stage">{e.stage}</div><h3><a class="experiment-link" href={e.code === 'HADES' ? 'https://www.hades.gsi.de/' : e.code === 'CBM' ? 'https://www.cbm.gsi.de/' : 'https://panda.gsi.de/'} target="_blank" rel="noopener noreferrer">{e.code} <span>— {e.title} ↗</span></a></h3><p>{e.text}</p><div class="beam-combination"><span>BEAM COMBINATION</span><strong>{e.beam}</strong></div></div></article>)}
     </div>
   </section>
   <p class="section-wrap note">The programme is staged in time: HADES with SIS18 is the current opportunity, CBM is associated with SIS100, while PANDA at HESR represents the longer-term perspective. Facility capabilities and schedules evolve; please consult official GSI and FAIR channels for operational information.</p>
