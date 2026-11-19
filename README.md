@@ -50,3 +50,8 @@ A dedicated `/contribute/` page invites community members to submit talks, publi
 
 ## Password-protected introduction
 The site displays a QCD at FAIR welcome screen and asks for the password `atgsi` before showing the website. Successful access is remembered in the browser's localStorage. This is a lightweight visitor gate only: because Astro is deployed as a static site and the password check runs in client-side JavaScript, it is not secure access control and does not protect the underlying pages or assets from someone who inspects the source. Do not use it for confidential content.
+
+
+## GitHub Pages deployment
+
+Configured for https://jgmes.github.io/qcdatfair/ using Astro `base: "/qcdatfair/"`. No custom domain or CNAME is required.
