@@ -63,7 +63,7 @@ const nav = [
       if (localStorage.getItem(accessKey) === 'yes') gate?.classList.add('is-hidden');
       accessForm?.addEventListener('submit', (event) => {
         event.preventDefault();
-        if (accessInput?.value === 'atgsi') {
+        if (accessInput?.value === 'HadronsAtGSI') {
           localStorage.setItem(accessKey, 'yes');
           gate?.classList.add('is-hidden');
           gateError.textContent = '';
