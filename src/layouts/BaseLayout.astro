@@ -54,31 +54,57 @@ const nav = [
       </div>
       <div class="footer-bottom"><span>© {new Date().getFullYear()} QCD at FAIR initiative</span><span>Research · Collaboration · Discovery</span></div>
     </footer>
-    <script>
-      const gate = document.querySelector('#access-gate');
-      const accessForm = document.querySelector('#access-form');
-      const accessInput = document.querySelector('#access-password');
-      const gateError = document.querySelector('#gate-error');
-      const accessKey = 'qcdatfair-access-granted-v2';
-      if (localStorage.getItem(accessKey) === 'yes') gate?.classList.add('is-hidden');
-      accessForm?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        if (accessInput?.value === 'HadronsAtGSI') {
-          localStorage.setItem(accessKey, 'yes');
-          gate?.classList.add('is-hidden');
-          gateError.textContent = '';
+    <script is:inline>
+      (() => {
+        const initialiseQcdatfair = () => {
+          const gate = document.getElementById('access-gate');
+          const accessForm = document.getElementById('access-form');
+          const accessInput = document.getElementById('access-password');
+          const gateError = document.getElementById('gate-error');
+          const accessKey = 'qcdatfair-access-granted-v3';
+
+          // Storage is a convenience only. It must never prevent password entry.
+          try {
+            if (window.localStorage && localStorage.getItem(accessKey) === 'yes') {
+              gate?.classList.add('is-hidden');
+            }
+          } catch (_storageError) {
+            // Continue with a fresh password check when storage is unavailable.
+          }
+
+          if (accessForm && !accessForm.dataset.gateReady) {
+            accessForm.dataset.gateReady = 'true';
+            accessForm.addEventListener('submit', (event) => {
+              event.preventDefault();
+              const entered = accessInput ? accessInput.value.trim() : '';
+              if (entered === 'HadronsAtGSI') {
+                try { localStorage.setItem(accessKey, 'yes'); } catch (_storageError) { /* optional */ }
+                gate?.classList.add('is-hidden');
+                if (gateError) gateError.textContent = '';
+              } else {
+                if (gateError) gateError.textContent = 'That password was not recognised. Please try again.';
+                if (accessInput) { accessInput.value = ''; accessInput.focus(); }
+              }
+            });
+          }
+
+          const toggle = document.querySelector('.menu-toggle');
+          const nav = document.querySelector('.main-nav');
+          if (toggle && nav && !toggle.dataset.menuReady) {
+            toggle.dataset.menuReady = 'true';
+            toggle.addEventListener('click', () => {
+              const open = nav.classList.toggle('open');
+              toggle.setAttribute('aria-expanded', String(open));
+            });
+          }
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initialiseQcdatfair, { once: true });
         } else {
-          gateError.textContent = 'That password was not recognised. Please try again.';
-          accessInput.value = '';
-          accessInput.focus();
+          initialiseQcdatfair();
         }
-      });
-      const toggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.main-nav');
-      toggle?.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
-      });
+      })();
     </script>
   </body>
 </html>
