@@ -59,7 +59,7 @@ const nav = [
       const accessForm = document.querySelector('#access-form');
       const accessInput = document.querySelector('#access-password');
       const gateError = document.querySelector('#gate-error');
-      const accessKey = 'qcdatfair-access-granted';
+      const accessKey = 'qcdatfair-access-granted-v2';
       if (localStorage.getItem(accessKey) === 'yes') gate?.classList.add('is-hidden');
       accessForm?.addEventListener('submit', (event) => {
         event.preventDefault();
