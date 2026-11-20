@@ -309,3 +309,37 @@
 .theme-card:nth-child(4n+1) .theme-symbol{color:var(--qcd-red)}
 .theme-card:nth-child(4n+2) .theme-symbol{color:var(--qcd-green)}
 .theme-card:nth-child(4n+3) .theme-symbol{color:var(--qcd-blue)}
+
+/* Main navigation: larger, more tactile QCD RGB controls in the upper-right. */
+.main-nav{align-items:center;gap:clamp(7px,1vw,13px);}
+.main-nav a{
+  position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;
+  min-height:42px;padding:9px 13px;border:1px solid rgba(171,199,211,.15);border-radius:7px;
+  color:#d7e4e9;font-size:14px;font-weight:650;letter-spacing:.01em;
+  background:linear-gradient(145deg,rgba(19,48,65,.78),rgba(8,29,44,.72));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 5px 16px rgba(0,0,0,.12);
+  transition:color .22s ease,border-color .22s ease,background .22s ease,transform .22s ease,box-shadow .22s ease;
+}
+.main-nav a::before{
+  content:"";position:absolute;left:12px;right:12px;bottom:5px;height:2px;border-radius:2px;
+  background:var(--qcd-rgb);opacity:0;transform:scaleX(.35);transform-origin:center;
+  transition:opacity .22s ease,transform .22s ease;z-index:-1;
+}
+.main-nav a:hover,.main-nav a.active{
+  color:#fff;border-color:rgba(89,211,186,.55);
+  background:linear-gradient(145deg,rgba(34,74,83,.9),rgba(14,43,59,.92));
+  box-shadow:0 7px 22px rgba(0,0,0,.2),0 0 18px rgba(53,230,107,.08);
+  transform:translateY(-2px);
+}
+.main-nav a:hover::before,.main-nav a.active::before{opacity:1;transform:scaleX(1);}
+.main-nav a.active{border-color:rgba(77,120,255,.55);}
+@media(max-width:1050px) and (min-width:651px){
+  .site-header{padding-left:24px;padding-right:24px;}
+  .qcd-animated-logo{width:clamp(165px,16vw,195px);}
+  .main-nav{gap:6px;}
+  .main-nav a{padding:8px 9px;font-size:13px;min-height:39px;}
+}
+@media(max-width:650px){
+  .main-nav{gap:10px;padding:18px 24px 22px;background:linear-gradient(145deg,#071a29,#0b2638);}
+  .main-nav a{justify-content:flex-start;width:100%;min-height:44px;padding:10px 14px;font-size:14px;border-radius:6px;}
+}
