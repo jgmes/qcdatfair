@@ -294,8 +294,8 @@
 .qcd-letter-c{animation:qcd-gluon 1.9s ease-in-out infinite;}
 .qcd-gluon-loop{transform-origin:245px 205px;animation:qcd-loop 2.1s linear infinite;filter:drop-shadow(0 0 5px rgba(255,48,48,.7));}
 .qcd-flux{stroke-dasharray:18 12;animation:qcd-flux-flow 1.3s linear infinite;filter:drop-shadow(0 0 5px rgba(255,70,70,.5));}
-@keyframes qcd-quark-q{0%,100%{transform:translateX(0)}50%{transform:translateX(-9px)}}
-@keyframes qcd-quark-d{0%,100%{transform:translateX(0)}50%{transform:translateX(9px)}}
+@keyframes qcd-quark-q{0%,100%{transform:translateX(0)}50%{transform:translateX(-30px)}}
+@keyframes qcd-quark-d{0%,100%{transform:translateX(0)}50%{transform:translateX(30px)}}
 @keyframes qcd-gluon{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
 @keyframes qcd-loop{to{transform:rotate(360deg)}}
 @keyframes qcd-flux-flow{to{stroke-dashoffset:-60}}
