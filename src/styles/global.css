@@ -276,3 +276,51 @@
 .experiment-link:hover{color:var(--cyan)}
 .experiment-link span{transition:color .2s ease}
 .experiment-link:hover span{color:var(--cyan)}
+
+
+/* QCD identity: RGB quark colours and a gluon-like binding field in the wordmark. */
+:root{
+  --qcd-red:#ff4054;
+  --qcd-green:#35e66b;
+  --qcd-blue:#4d78ff;
+  --qcd-rgb:linear-gradient(90deg,var(--qcd-red) 0%,var(--qcd-green) 48%,var(--qcd-blue) 100%);
+}
+.site-header{border-bottom-color:rgba(103,225,223,.12);}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--qcd-rgb);opacity:.78;pointer-events:none;}
+.qcd-animated-logo{display:block;width:clamp(205px,19vw,260px);height:auto;overflow:visible;filter:drop-shadow(0 2px 10px rgba(0,0,0,.25));}
+.qcd-animated-logo text{font-family:Manrope,'Arial',sans-serif;font-weight:800;letter-spacing:-4px;}
+.qcd-letter-q text{font-size:56px;fill:var(--qcd-green);}
+.qcd-letter-c text{font-size:56px;fill:var(--qcd-red);}
+.qcd-letter-d text{font-size:56px;fill:var(--qcd-blue);}
+.qcd-at{font-size:22px;fill:#d5e2e8;letter-spacing:-1px!important;font-weight:500!important;}
+.qcd-fair{font-size:31px;fill:#eaf2f5;letter-spacing:-1.8px!important;}
+.qcd-fair-arc{opacity:.9;}
+.qcd-flux{stroke-dasharray:7 6;filter:url(#qcd-glow);animation:qcd-flux-flow 2.4s linear infinite;opacity:.9;}
+.qcd-letter-q{transform-origin:31px 35px;animation:qcd-quark-q 3.8s ease-in-out infinite;}
+.qcd-letter-d{transform-origin:139px 35px;animation:qcd-quark-d 3.8s ease-in-out infinite;}
+.qcd-letter-c{transform-origin:84px 34px;animation:qcd-gluon 1.9s ease-in-out infinite;}
+.qcd-gluon-loop{transform-origin:85px 25px;animation:qcd-gluon-loop 2.8s linear infinite;filter:url(#qcd-glow);}
+@keyframes qcd-quark-q{0%,100%{transform:translateX(0)}50%{transform:translateX(-4px)}}
+@keyframes qcd-quark-d{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes qcd-gluon{0%,100%{transform:scale(1) rotate(-2deg);filter:drop-shadow(0 0 2px rgba(255,64,84,.3))}50%{transform:scale(1.055) rotate(3deg);filter:drop-shadow(0 0 8px rgba(255,64,84,.85))}}
+@keyframes qcd-gluon-loop{to{transform:rotate(360deg)}}
+@keyframes qcd-flux-flow{to{stroke-dashoffset:-26}}
+.main-nav a:hover,.main-nav a.active{color:#fff;text-shadow:0 0 13px rgba(77,120,255,.55);}
+.main-nav a.active::after{background:var(--qcd-rgb);}
+.theme-card:nth-child(3n+1):hover{border-color:var(--qcd-red)}
+.theme-card:nth-child(3n+2):hover{border-color:var(--qcd-green)}
+.theme-card:nth-child(3n):hover{border-color:var(--qcd-blue)}
+.section-kicker span,.card-index{background-image:var(--qcd-rgb);background-clip:text;-webkit-background-clip:text;color:transparent;}
+.framework-pillars>div:nth-child(4n+1){border-top:2px solid var(--qcd-red)}
+.framework-pillars>div:nth-child(4n+2){border-top:2px solid var(--qcd-green)}
+.framework-pillars>div:nth-child(4n+3){border-top:2px solid var(--qcd-blue)}
+.framework-pillars>div:nth-child(4n){border-top:2px solid rgba(255,255,255,.35)}
+@media(max-width:700px){.qcd-animated-logo{width:190px}}
+@media(prefers-reduced-motion:reduce){.qcd-letter-q,.qcd-letter-c,.qcd-letter-d,.qcd-gluon-loop,.qcd-flux{animation:none!important}}
+.hero{isolation:isolate}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 80% 18%,rgba(77,120,255,.11),transparent 26%),radial-gradient(circle at 62% 72%,rgba(53,230,107,.075),transparent 24%),radial-gradient(circle at 18% 82%,rgba(255,64,84,.07),transparent 22%)}
+.button-primary{background:linear-gradient(105deg,var(--qcd-red),var(--qcd-green) 52%,var(--qcd-blue));color:#061a28;}
+.button-primary:hover{filter:brightness(1.12);}
+.theme-card:nth-child(4n+1) .theme-symbol{color:var(--qcd-red)}
+.theme-card:nth-child(4n+2) .theme-symbol{color:var(--qcd-green)}
+.theme-card:nth-child(4n+3) .theme-symbol{color:var(--qcd-blue)}

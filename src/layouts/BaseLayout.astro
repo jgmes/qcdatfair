@@ -39,7 +39,17 @@ const nav = [
     </section>
     <header class="site-header">
       <a class="brand" href={import.meta.env.BASE_URL + ""} aria-label="QCD at FAIR home">
-        <img class="brand-logo" src={import.meta.env.BASE_URL + "images/qcdatfair-logo.png"} alt="QCD at FAIR" />
+        <svg class="qcd-animated-logo" viewBox="0 0 310 66" role="img" aria-label="QCD at FAIR" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="qcd-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path class="qcd-flux" d="M43 35 C68 13 83 57 108 35 S148 13 171 35" fill="none" stroke="#ff4054" stroke-width="2.2" stroke-linecap="round"/>
+          <g class="qcd-letter-q"><text x="3" y="51">Q</text></g>
+          <g class="qcd-letter-c"><text x="58" y="51">C</text><path class="qcd-gluon-loop" d="M78 18 C96 8 103 27 91 34 C82 39 72 31 78 18Z" fill="none" stroke="#ff4054" stroke-width="1.7"/></g>
+          <g class="qcd-letter-d"><text x="111" y="51">D</text></g>
+          <text class="qcd-at" x="184" y="45">at</text><text class="qcd-fair" x="220" y="45">FAIR</text>
+          <path class="qcd-fair-arc" d="M218 55 Q261 65 299 12" fill="none" stroke="#ffb64d" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
       </a>
       <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
       <nav class="main-nav" aria-label="Main navigation">
@@ -49,7 +59,17 @@ const nav = [
     <main><slot /></main>
     <footer class="site-footer">
       <div class="footer-top">
-        <a class="brand footer-brand" href={import.meta.env.BASE_URL + ""} aria-label="QCD at FAIR home"><img class="brand-logo" src={import.meta.env.BASE_URL + "images/qcdatfair-logo.png"} alt="QCD at FAIR" /></a>
+        <a class="brand footer-brand" href={import.meta.env.BASE_URL + ""} aria-label="QCD at FAIR home"><svg class="qcd-animated-logo" viewBox="0 0 310 66" role="img" aria-label="QCD at FAIR" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="qcd-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path class="qcd-flux" d="M43 35 C68 13 83 57 108 35 S148 13 171 35" fill="none" stroke="#ff4054" stroke-width="2.2" stroke-linecap="round"/>
+          <g class="qcd-letter-q"><text x="3" y="51">Q</text></g>
+          <g class="qcd-letter-c"><text x="58" y="51">C</text><path class="qcd-gluon-loop" d="M78 18 C96 8 103 27 91 34 C82 39 72 31 78 18Z" fill="none" stroke="#ff4054" stroke-width="1.7"/></g>
+          <g class="qcd-letter-d"><text x="111" y="51">D</text></g>
+          <text class="qcd-at" x="184" y="45">at</text><text class="qcd-fair" x="220" y="45">FAIR</text>
+          <path class="qcd-fair-arc" d="M218 55 Q261 65 299 12" fill="none" stroke="#ffb64d" stroke-width="2.4" stroke-linecap="round"/>
+        </svg></a>
         <p>A coordinated community exploring the strong interaction<br />with hadron beams at GSI and FAIR.</p>
       </div>
       <div class="footer-bottom"><span>© {new Date().getFullYear()} QCD at FAIR initiative</span><span>Research · Collaboration · Discovery</span></div>
