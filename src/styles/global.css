@@ -343,3 +343,15 @@
   .main-nav{gap:10px;padding:18px 24px 22px;background:linear-gradient(145deg,#071a29,#0b2638);}
   .main-nav a{justify-content:flex-start;width:100%;min-height:44px;padding:10px 14px;font-size:14px;border-radius:6px;}
 }
+
+
+/* Size and align the existing animated QCDatFAIR logo on the password screen */
+.access-gate .gate-logo{
+  width:min(100%,280px);
+  max-height:105px;
+  margin:0 0 42px;
+  overflow:visible;
+}
+@media(max-width:700px){
+  .access-gate .gate-logo{width:min(100%,250px)}
+}

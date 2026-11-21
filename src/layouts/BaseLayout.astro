@@ -22,7 +22,17 @@ const nav = [
     <section class="access-gate" id="access-gate" aria-labelledby="gate-title">
       <div class="gate-grid"></div>
       <div class="gate-panel">
-        <img class="gate-logo" src={import.meta.env.BASE_URL + "images/qcdatfair-logo.png"} alt="QCD at FAIR" />
+        <svg class="qcd-animated-logo gate-logo" viewBox="0 0 1106 408" role="img" aria-label="QCD at FAIR" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="qcd-flux-gradient" x1="0" x2="1"><stop offset="0" stop-color="#00ed20"/><stop offset=".5" stop-color="#ff1010"/><stop offset="1" stop-color="#1010ff"/></linearGradient>
+            <filter id="qcd-soft-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <path class="qcd-flux" d="M165 225 C205 160 235 290 270 220 S330 160 365 225" fill="none" stroke="url(#qcd-flux-gradient)" stroke-width="5" stroke-linecap="round"/>
+          <g class="qcd-letter-q"><image href={import.meta.env.BASE_URL + "images/logo-q.png"} x="20" y="115" width="215" height="215" /></g>
+          <g class="qcd-letter-d"><image href={import.meta.env.BASE_URL + "images/logo-d.png"} x="290" y="115" width="180" height="210" /></g>
+          <g class="qcd-letter-c"><image href={import.meta.env.BASE_URL + "images/logo-c.png"} x="190" y="115" width="120" height="215" /><path class="qcd-gluon-loop" d="M228 195 C244 170 270 181 265 207 C260 231 231 233 224 213 C221 206 223 200 228 195Z" fill="none" stroke="#ff3030" stroke-width="4" stroke-linecap="round"/></g>
+          <image href={import.meta.env.BASE_URL + "images/logo-at-fair.png"} x="475" y="0" width="631" height="408" />
+        </svg>
         <div class="gate-kicker"><span></span> COMMUNITY ACCESS</div>
         <h1 id="gate-title">The strong interaction.<br /><em>A shared frontier.</em></h1>
         <p class="gate-intro">Welcome to QCD at FAIR — connecting the hadron-physics community around the scientific opportunities at GSI and FAIR.</p>
