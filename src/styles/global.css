@@ -345,13 +345,97 @@
 }
 
 
-/* Size and align the existing animated QCDatFAIR logo on the password screen */
-.access-gate .gate-logo{
+/* Coordinated atom animation around the existing, left-aligned login wordmark.
+   The logo keeps its original dimensions, alignment and vertical spacing. */
+.gate-panel .gate-atom-logo{
+  position:relative;
   width:min(100%,280px);
-  max-height:105px;
+  height:105px;
   margin:0 0 42px;
-  overflow:visible;
+  isolation:isolate;
+}
+.gate-panel .gate-atom-logo .gate-logo{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:100%;
+  height:105px;
+  max-height:105px;
+  object-fit:contain;
+  object-position:left center;
+  margin:0;
+}
+.gate-atom-orbit{
+  position:absolute;
+  z-index:1;
+  left:140px;
+  top:52px;
+  width:286px;
+  height:82px;
+  border:1px solid rgba(91,220,220,.27);
+  border-radius:50%;
+  transform:translate(-50%,-50%) rotate(-24deg);
+  transform-origin:center;
+  animation:gate-atom-orbit-turn 18s linear infinite;
+  pointer-events:none;
+}
+.gate-atom-orbit-two{
+  width:286px;
+  height:82px;
+  border-color:rgba(255,151,112,.32);
+  transform:translate(-50%,-50%) rotate(36deg);
+  animation:gate-atom-orbit-turn 18s linear infinite;
+  animation-delay:-6s;
+}
+.gate-atom-orbit-three{
+  width:286px;
+  height:82px;
+  border-color:rgba(105,145,255,.28);
+  transform:translate(-50%,-50%) rotate(96deg);
+  animation:gate-atom-orbit-turn 18s linear infinite;
+  animation-delay:-12s;
+}
+.gate-atom-orbit i{
+  position:absolute;
+  left:50%;
+  top:-4px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#62e4df;
+  box-shadow:0 0 9px 2px rgba(98,228,223,.7);
+}
+.gate-atom-orbit-two i{
+  background:#ff9870;
+  box-shadow:0 0 9px 2px rgba(255,152,112,.7);
+}
+.gate-atom-orbit-three i{
+  background:#829cff;
+  box-shadow:0 0 9px 2px rgba(130,156,255,.7);
+}
+@keyframes gate-atom-orbit-turn{
+  from{transform:translate(-50%,-50%) rotate(-24deg)}
+  to{transform:translate(-50%,-50%) rotate(336deg)}
+}
+.gate-atom-orbit-two{animation-name:gate-atom-orbit-turn-two}
+.gate-atom-orbit-three{animation-name:gate-atom-orbit-turn-three}
+@keyframes gate-atom-orbit-turn-two{
+  from{transform:translate(-50%,-50%) rotate(36deg)}
+  to{transform:translate(-50%,-50%) rotate(396deg)}
+}
+@keyframes gate-atom-orbit-turn-three{
+  from{transform:translate(-50%,-50%) rotate(96deg)}
+  to{transform:translate(-50%,-50%) rotate(456deg)}
 }
 @media(max-width:700px){
-  .access-gate .gate-logo{width:min(100%,250px)}
+  .gate-panel .gate-atom-logo{
+    width:220px;
+    height:105px;
+    margin-bottom:34px;
+  }
+  .gate-panel .gate-atom-logo .gate-logo{width:220px}
+  .gate-atom-orbit{left:110px;width:230px;height:72px}
+}
+@media(prefers-reduced-motion:reduce){
+  .gate-atom-orbit{animation:none!important}
 }
